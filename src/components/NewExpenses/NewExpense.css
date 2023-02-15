@@ -1,0 +1,20 @@
+.new-expense {
+    display: block;
+    padding: 1rem;
+    background-color: salmon;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.new-expense button {
+    background-color: rgb(46, 247, 136);
+    cursor: pointer;
+    border: 1px solid rebeccapurple;
+    color: black;
+    border-radius: 12px;
+    padding: 8px;
+
+}
