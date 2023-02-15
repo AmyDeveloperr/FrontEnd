@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpenses/NewExpense";
-
-const DUMMY_EXPENSES = [
-  { id: "1", date: new Date(2023, 1, 10), title: "Rent", amount: 100 },
-  { id: "2", date: new Date(2022, 4, 10), title: "Tourism", amount: 200 },
-  { id: "3", date: new Date(2021, 2, 5), title: "Grocery", amount: 300 },
-  { id: "4", date: new Date(2020, 8, 17), title: "Petrol", amount: 400 },
-];
+import React, {useState} from 'react';
+import UserForm from './components/UserForm';
+import NewUser from './components/NewUser';
 
 const App = () => {
-  
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const newExpenses = (expenseData) => {
+    const [userData, setUserData] = useState([]);
 
-    // const updatedExpense = [expenseData, ...expenses];
-    setExpenses(prevExpenses => {
-      return [expenseData, ...prevExpenses];
-    });
-
-  }
-
+    const addUserHandler = (uName, uAge) => {
+      setUserData(prevData => {
+        return [...prevData, {name: uName, age:uAge, id:Math.random().toString()}]
+      })
+    }
+   
   return (
     <div>
-      <NewExpense onSaveExpenses={newExpenses}/>
-      <Expenses items={expenses} />
+      
+      <UserForm onAddUser={addUserHandler} />
+      <NewUser users={userData} />
+
     </div>
   );
 };
