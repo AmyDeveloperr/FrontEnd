@@ -1,25 +1,26 @@
-import React, {useState} from 'react';
-import UserForm from './components/UserForm';
-import NewUser from './components/NewUser';
+import React, { useState, Fragment } from 'react';
 
-const App = () => {
+import AddUser from './components/Users/AddUser';
+import UsersList from './components/Users/UsersList';
 
-    const [userData, setUserData] = useState([]);
+function App() {
+  const [usersList, setUsersList] = useState([]);
 
-    const addUserHandler = (uName, uAge) => {
-      setUserData(prevData => {
-        return [...prevData, {name: uName, age:uAge, id:Math.random().toString()}]
-      })
-    }
-   
+  const addUserHandler = (uName, uAge, uCollege) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, college: uCollege,  id: Math.random().toString() },
+      ];
+    });
+  };
+
   return (
-    <div>
-      
-      <UserForm onAddUser={addUserHandler} />
-      <NewUser users={userData} />
-
-    </div>
+    <Fragment>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
+    </Fragment>
   );
-};
+}
 
 export default App;
